@@ -1,70 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container"> 
-    <div class="container-xll">
-        <div class="body">
-                <div class="slider">
-                    <div class="slides">
-                            <input type="radio" name="radio-btn" id="radio1">
-                            <input type="radio" name="radio-btn" id="radio2">
-                            <input type="radio" name="radio-btn" id="radio3">
-                            <input type="radio" name="radio-btn" id="radio4">
 
-                        <div class="slide first">
-                            <img src="../images/thrif.jpg" alt="">     
-                        </div>
-                        <div class="slide">
-                            <img src="../images/thrif.jpg" alt="">
-                        </div>
-                        <div class="slide">
-                            <img src="../images/thrif.jpg" alt="">
-                        </div>
-                        <div class="slide">
-                            <img src="../images/thrif.jpg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="navigation-auto">
-                        <div class="auto-btn1"></div>
-                        <div class="auto-btn2"></div>
-                        <div class="auto-btn3"></div>
-                        <div class="auto-btn4"></div>
-                    </div>
-
-                    <div class="navigation-manual">
-                        <label for="radio1" class="manual-btn"></label>
-                        <label for="radio2" class="manual-btn"></label>
-                        <label for="radio3" class="manual-btn"></label>
-                        <label for="radio4" class="manual-btn"></label>
-                    </div>
-                </div>
-            </div>
-    <section class="container">
+            
+    <section class="container" style="background-color:auqa">
             <article class="why-donor pt-5 pb-5 d-flex flex-column">
                 <h1 class="mb-5 text-center">Mengapa Harus Zulla Cell ?</h1>
                 <div class="why d-flex mb-5">
                     <div class="why-image">
-                        <img src="../images/thrif.jpg" width="100%" alt="gambar orang bertanya">
+                        <img src="../images/logo zula.jpeg" width="90%" alt="gambar orang bertanya">
                     </div>
-                    <div class="why-content align-self-center ml-3" style="width: 60%;">
+                    <div class="why-content align-self-center ml-3" style="width: 100%;">
                         <p style="font-size: 18px;">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit at magnam in libero distinctio pariatur laudantium culpa asperiores, placeat obcaecati, sint architecto tempore officiis dolores repellat accusantium ipsa animi nulla.
+                       dengan membeli barang di konter zula cell tentu bisa memiliki keuntungan-keuntungan, seperti:
+                    <ol type="1">
+                        <li>Tempat terdekat untuk membeli barang</li>
+                        <li>Keterjangkauan harga barang yang bisa di diskon</li>
+                        <li>Kemudahan dalam pengambilan barang atau pembelian langsung tanpa harus memesan secara online</li>
+                        <li>Bisa melihat dan memegang barang sebelum membelinya, sehingga bisa memastikan barang yang kita beli sesuai dengan keinginan dan harapan kita.
+                    </ol>
+
+
+
                     </p>
                         <p style="font-size: 18px;">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque deserunt provident sit rem dolore, perferendis est aliquid quasi magni explicabo odio, cum dolorem eius ut dolores facilis consequuntur similique vitae!
+                        membeli barang secara offline secara langsung dan datang ke outlet akan lebih pasti karena kita bisa melihat produk barang yang akan dibeli dan bergaransi.
                         </p>
                     </div>
                 </div>
                 <div class="button align-self-center">
-                    <a href=""><button type="button" class="primary-btn">Daftar Sekarang</button></a>
+                    <a href="{{ route('admin.account.index') }}"><button type="button" class="primary-btn">Daftar Sekarang</button></a>
                 </div>
             </article>
         </section>
         <section id="faq" class="faq">
     <div class="container" data-aos="fade-up">
         <header class="section-header">
-        <h1 class="mb-5 text-center">Kriteria Pendaftaran Mitra Di Zulla Cell ?</h1>
+        <h1 class="mb-5 text-center">Kriteria Pembelian Di Zulla Cell ?</h1>
      
         </header>
         <div class="row">
@@ -157,3 +129,77 @@
 </section>
      
 @endsection
+
+
+@section('script')
+<script type="text/javascript" src="{{ asset('app-assets/js/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('app-assets/js/dataTables.bootstrap5.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+    var counter = 1;
+    setInterval(function() {
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if(counter > 4){
+            counter = 1;
+        }
+    }, 5000);
+  
+        function dotslide(n){
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            var i;
+            var slides = document.getElementsByClassName("imgslide");
+            var dot = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+            for (i = 0; i < slides.length; i++) {
+                
+                slides[i].style.display = "none";
+            }
+
+            for (i = 0; i < slides.length; i++) {
+                
+                dot[i].className = dot[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+
+            dot[slideIndex - 1].className += " active";
+            
+
+
+        }
+    // preview gambar
+    function previewImg() {
+        const foto = document.querySelector('#preview_gambar');
+        // const fotoLabel = document.querySelector('.fotoLabel');
+        const fotoLoad = document.querySelector('#gambar_load');
+
+        // fotoLabel.textContent = foto.files[0].name;
+
+        const fileFoto = new FileReader();
+        fileFoto.readAsDataURL(foto.files[0]);
+
+        fileFoto.onload = function (e) {
+            fotoLoad.src = e.target.result;
+        }
+    }
+
+    // Automation show picture
+
+    // preview gambar edit
+   
+</script>
+@endsection
+
+

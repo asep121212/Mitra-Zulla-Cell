@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
     <div class="container">
         <div class="mb-4" style="position: relative">
-            <div class="card" style="background: #F8EDE3">
+            <div class="card" style="background: #ABAC84">
                 <div class="card-body p-5">
-                    <h3 class="text-center mb-3 fw-bold">Cari Tshirt Favoritmu!</h3>
+                    <h3 class="text-center mb-3 fw-bold">Cari Voucher Favoritmu!</h3>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Tshirt..." aria-label="Search"
                             name="search">
@@ -18,21 +19,21 @@
             <div class="mb-4">
                 <div class="d-flex justify-content-between w-100">
                     <h5 class="fw-bold align-self-center">Hasil Pencarianmu</h5>
-                    <a href="/aksesoris" class="btn btn-secondary px-2">Kembali</a>
+                    <a href="/struck" class="btn btn-secondary px-2">Kembali</a>
                 </div>
                 <hr class="border-main">
                 <div class="d-flex flex-wrap">
-                    @if (count($aksesoris) > 0)
-                        @foreach ($aksesoris as $d)
+                    @if (count($struck) > 0)
+                        @foreach ($struck as $d)
                             <div class="card me-4 mb-4" style="width: 250px;">
                                 <div class="card-body">
                                     @if ($d->thumbnail !== null)
-                                        <img src="{{ asset('storage/product_images/thumbnail') . $d->thumbnail }}"
+                                        <img src="{{ asset('storage/voucher_images/thumbnail') . $d->thumbnail }}"
                                             class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="voucher_images/default.png" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif
@@ -63,17 +64,17 @@
                 </div>
                 <hr class="border-main">
                 <div class="d-flex flex-wrap">
-                    @foreach ($aksesoris as $d)
+                    @foreach ($struck as $d)
                         @if ($d->raw == 0)
                             <div class="card me-4 mb-4" style="width: 250px;">
                                 <div class="card-body">
                                     @if ($d->thumbnail !== null)
-                                        <img src="{{ asset('storage/product_images/thumbnail') . $d->thumbnail }}"
+                                        <img src="{{ asset('storage/voucher_images/thumbnail') . $d->thumbnail }}"
                                             class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="voucher_images/default.png" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif
@@ -100,17 +101,17 @@
                 </div>
                 <hr class="border-main">
                 <div class="d-flex flex-wrap">
-                    @foreach ($aksesoris as $d)
+                    @foreach ($struck as $d)
                         @if ($d->raw == 1)
                             <div class="card me-4 mb-4" style="width: 250px;">
                                 <div class="card-body">
                                     @if ($d->thumbnail !== null)
-                                        <img src="{{ asset('storage/product_images/thumbnail') . $d->thumbnail }}"
+                                        <img src="{{ asset('storage/voucher_images/thumbnail') . $d->thumbnail }}"
                                             class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="voucher_images/default.png" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif
@@ -137,17 +138,17 @@
                 </div>
                 <hr class="border-main">
                 <div class="d-flex flex-wrap">
-                    @foreach ($aksesoris as $d)
+                    @foreach ($struck as $d)
                         @if ($d->raw == 2)
                             <div class="card me-4 mb-4" style="width: 250px;">
                                 <div class="card-body">
                                     @if ($d->thumbnail !== null)
-                                        <img src="{{ asset('storage/product_images/thumbnail') . $d->thumbnail }}"
+                                        <img src="{{ asset('storage/voucher_images/thumbnail') . $d->thumbnail }}"
                                             class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="voucher_images/default.png" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif
@@ -174,17 +175,17 @@
                 </div>
                 <hr class="border-main">
                 <div class="d-flex flex-wrap">
-                    @foreach ($aksesoris as $d)
+                    @foreach ($struck as $d)
                         @if ($d->raw == 3)
                             <div class="card me-4 mb-4" style="width: 250px;">
                                 <div class="card-body">
                                     @if ($d->thumbnail !== null)
-                                        <img src="{{ asset('storage/product_images/thumbnail') . $d->thumbnail }}"
+                                        <img src="{{ asset('storage/voucher_images/thumbnail') . $d->thumbnail }}"
                                             class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="voucher_images/default.png" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif
@@ -211,17 +212,17 @@
                 </div>
                 <hr class="border-main">
                 <div class="d-flex flex-wrap">
-                    @foreach ($aksesoris as $d)
+                    @foreach ($struck as $d)
                         @if ($d->raw == 4)
                             <div class="card me-4 mb-4" style="width: 250px;">
                                 <div class="card-body">
                                     @if ($d->thumbnail !== null)
-                                        <img src="{{ asset('storage/product_images/thumbnail') . $d->thumbnail }}"
+                                        <img src="{{ asset('storage/voucher_images/thumbnail') . $d->thumbnail }}"
                                             class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="voucher_images/default.png" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif

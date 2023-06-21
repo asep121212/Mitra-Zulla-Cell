@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Voucher;
+use App\Models\Handphone;
+use App\Models\Aksesori;
 use App\Models\Setting;
+use App\Models\Order;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
@@ -57,6 +61,13 @@ class HomeController extends Controller
             ->where('c.status', 1)
             ->where('raw', 3)
             ->paginate(5);   
+        $struck = Product::select('products.*', 'c.name as category_name')
+            ->join('categories as c', 'c.id', 'products.category_id')
+            ->where('products.status', 1)
+            ->where('c.status', 1)
+            ->where('raw', 3)
+            ->paginate(5);
+      
         
         $smartfren = Product::select('products.*', 'c.name as category_name')
             ->join('categories as c', 'c.id', 'products.category_id')
@@ -64,7 +75,7 @@ class HomeController extends Controller
             ->where('c.status', 1)
             ->where('raw', 4)
             ->paginate(5); 
-        return view('user.landing', compact(['smartfren','axis','indosat','telkomsel','tri','pulsa']));
+        return view('user.landing', compact(['smartfren','axis','indosat','telkomsel','tri','pulsa','struck']));
     }
 
     public function pulsa(Request $request)
@@ -87,85 +98,93 @@ class HomeController extends Controller
                 ->get();
             return view('user.pulsa', compact(['pulsa', 'search']));
         }
-        if ($request->search != null) {
-            $tri = Product::select('products.*', 'c.name as category_name')
-                ->join('categories as c', 'c.id', 'products.category_id')
-                ->where('products.status', 1)
-                ->where('c.status', 1)
-                ->where('products.name', 'LIKE', '%' . $request->search . '%')
-                ->get();
-            $search = true;
-            return view('user.tri', compact(['tri', 'search']));
-        } else {
-            $tri = Product::select('products.*', 'c.name as category_name')
-                ->join('categories as c', 'c.id', 'products.category_id')
-                ->where('products.status', 1)
-                ->where('c.status', 1)
-                ->get();
-            return view('user.tri', compact(['tri', 'search']));
-        }
+  
     }
-    public function voucher(Request $request)
+    public function struck(Request $request)
     {
         $search = false;
         if ($request->search != null) {
-            $voucher = Product::select('products.*', 'c.name as category_name')
-                ->join('categories as c', 'c.id', 'products.category_id')
-                ->where('products.status', 1)
+            $struck = Voucher::select('vouchers.*', 'c.name as category_name')
+                ->join('categories as c', 'c.id', 'vouchers.category_id')
+                ->where('vouchers.status', 1)
                 ->where('c.status', 1)
-                ->where('products.name', 'LIKE', '%' . $request->search . '%')
+                ->where('vouchers.name', 'LIKE', '%' . $request->search . '%')
                 ->get();
             $search = true;
-            return view('user.voucher', compact(['voucher', 'search']));
+            return view('user.struck', compact(['struck', 'search']));
         } else {
-            $voucher = Product::select('products.*', 'c.name as category_name')
-                ->join('categories as c', 'c.id', 'products.category_id')
-                ->where('products.status', 1)
+            $struck = Voucher::select('vouchers.*', 'c.name as category_name')
+                ->join('categories as c', 'c.id', 'vouchers.category_id')
+                ->where('vouchers.status', 1)
                 ->where('c.status', 1)
                 ->get();
-            return view('user.voucher', compact(['voucher', 'search']));
+            return view('user.struck', compact(['struck', 'search']));
         }
     }
-    public function aksesoris(Request $request)
+   
+  
+    public function contat(Request $request)
     {
         $search = false;
         if ($request->search != null) {
-            $aksesoris = Product::select('products.*', 'c.name as category_name')
+            $contat = Product::select('products.*', 'c.name as category_name')
                 ->join('categories as c', 'c.id', 'products.category_id')
                 ->where('products.status', 1)
                 ->where('c.status', 1)
                 ->where('products.name', 'LIKE', '%' . $request->search . '%')
                 ->get();
             $search = true;
-            return view('user.aksesoris', compact(['aksesoris', 'search']));
+            return view('user.contat', compact(['contat', 'search']));
         } else {
-            $aksesoris = Product::select('products.*', 'c.name as category_name')
+            $contat = Product::select('products.*', 'c.name as category_name')
                 ->join('categories as c', 'c.id', 'products.category_id')
                 ->where('products.status', 1)
                 ->where('c.status', 1)
                 ->get();
-            return view('user.aksesoris', compact(['aksesoris', 'search']));
+            return view('user.contat', compact(['contat', 'search']));
         }
     }
-    public function handpone(Request $request)
+    public function akses(Request $request)
     {
         $search = false;
         if ($request->search != null) {
-            $handpone = Product::select('products.*', 'c.name as category_name')
-                ->join('categories as c', 'c.id', 'products.category_id')
-                ->where('products.status', 1)
+            $akses = Aksesori::select('aksesoris.*', 'c.name as category_name')
+                ->join('categories as c', 'c.id', 'aksesoris.category_id')
+                ->where('aksesoris.status', 1)
                 ->where('c.status', 1)
-                ->where('products.name', 'LIKE', '%' . $request->search . '%')
+                ->where('aksesoris.name', 'LIKE', '%' . $request->search . '%')
                 ->get();
             $search = true;
-            return view('user.handpone', compact(['handpone', 'search']));
+            return view('user.akses', compact(['akses', 'search']));
         } else {
-            $handpone = Product::select('products.*', 'c.name as category_name')
-                ->join('categories as c', 'c.id', 'products.category_id')
-                ->where('products.status', 1)
+            $akses = Aksesori::select('aksesoris.*', 'c.name as category_name')
+                ->join('categories as c', 'c.id', 'aksesoris.category_id')
+                ->where('aksesoris.status', 1)
                 ->where('c.status', 1)
                 ->get();
-            return view('user.handpone', compact(['handpone', 'search']));
+            return view('user.akses', compact(['akses', 'search']));
+        }
+    }
+  
+    public function phone(Request $request)
+    {
+        $search = false;
+        if ($request->search != null) {
+            $phone = Handphone::select('handphones.*', 'c.name as category_name')
+                ->join('categories as c', 'c.id', 'handphones.category_id')
+                ->where('handphones.status', 1)
+                ->where('c.status', 1)
+                ->where('handphones.name', 'LIKE', '%' . $request->search . '%')
+                ->get();
+            $search = true;
+            return view('user.phone', compact(['phone', 'search']));
+        } else {
+            $phone = Handphone::select('handphones.*', 'c.name as category_name')
+                ->join('categories as c', 'c.id', 'handphones.category_id')
+                ->where('handphones.status', 1)
+                ->where('c.status', 1)
+                ->get();
+            return view('user.phone', compact(['phone', 'search']));
         }
     }
     public function about(Request $request)
@@ -189,7 +208,6 @@ class HomeController extends Controller
             return view('user.about', compact(['about', 'search']));
         }
     }
-
     public function cart()
     {
         $client = new Client();
@@ -200,6 +218,27 @@ class HomeController extends Controller
         $city = json_decode($response->getBody()->getContents())->rajaongkir->results;
         return view('user.cart', compact('city'));
     }
+    public function getCourier(Request $request)
+    {
+        $client = new Client();
+        $response = $client->request('POST', 'https://api.rajaongkir.com/starter/cost', [
+            'headers' => ['key' => env("RAJA_ONGKIR_KEY")],
+            'form_params' => [
+                'origin' => $request->origin,
+                'destination' => $request->destination,
+                'weight' => $request->weight,
+                'courier' => $request->courier,
+            ],
+        ]);
+        return response()->json(['data' => json_decode($response->getBody()->getContents())->rajaongkir]);
+    }
+    
+    public function admin_home()
+    {
+        return view('admin.account.index');
+    }
+
+
 
     public function order(Request $request)
     {
@@ -258,18 +297,5 @@ class HomeController extends Controller
         return redirect()->away($api_wa . $phone_number . '&text=' . implode('%0A', $text));
     }
 
-    public function getCourier(Request $request)
-    {
-        $client = new Client();
-        $response = $client->request('POST', 'https://api.rajaongkir.com/starter/cost', [
-            'headers' => ['key' => env("RAJA_ONGKIR_KEY")],
-            'form_params' => [
-                'origin' => $request->origin,
-                'destination' => $request->destination,
-                'weight' => $request->weight,
-                'courier' => $request->courier,
-            ],
-        ]);
-        return response()->json(['data' => json_decode($response->getBody()->getContents())->rajaongkir]);
-    }
+ 
 }

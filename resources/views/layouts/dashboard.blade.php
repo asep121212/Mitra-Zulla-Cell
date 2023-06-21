@@ -49,7 +49,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg sticky-top" style="min-height: 76px; background-color: #F8EDE3;">
+        <nav class="navbar navbar-expand-lg sticky-top" style="min-height: 76px; background-color: #ABAC84;">
             <div class="container">
               <a class="navbar-brand fw-bold" href="/">Zulla Cell</a>
             </div>

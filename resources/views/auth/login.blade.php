@@ -1,16 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 <div class="container" style="margin-top: 3%; margin-bottom: 5.3%">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);transition: 0.3s;border-radius: 5px;">
-                <div class="card-header text-center" style="background-color:#ff4d4d; color:#fff;">{{ __('Login') }}</div>
+                <div class="card-header text-center" style="background-color:#ABAC84; color:#fff;">{{ __('Login') }}</div>
         
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
@@ -67,8 +66,6 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-
-
                             </div>
                         </div>
                     </form>

@@ -41,9 +41,7 @@
     <!-- Scripts -->
     <link href="{{ asset('app-assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script type="text/javascript"
-      src="https://app.sandbox.midtrans.com/snap/snap.js"
-      data-client-key="midtrans.client_key"></script>
+
     <script type="text/javascript" src="{{ asset('app-assets/js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('app-assets/js/bootstrap2.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('app-assets/js/feather.min.js') }}"></script>
@@ -53,7 +51,7 @@
 
 <body>
     <div id="app" >
-        <nav class="navbar navbar-expand-lg sticky-top" style="min-height: 76px; background-color: #ABAC84">
+        <nav class="navbar navbar-expand-lg sticky-top" style="min-height: 76px; background-color: #ABAC84;">
             <div class="container">
                 @if ($set->logo !== null)
                     <a class="navbar-brand fw-bold" href="/">
@@ -80,7 +78,7 @@
                             <a class="nav-link text-black" href="/contat">Contact</a>
                         </li>
                         <li class="nav-item dropdown text-black"><a class="dropdown-toggle nav-link text-black" data-toggle="dropdown" aria-expanded="false" href="#" >Product</a>
-                            <div class="dropdown-menu " role="menu"><a class="dropdown-item  text-black"  href="/pulsa">Pulsa</a><a class="dropdown-item  text-black" href="/struck">Voucher</a><a class="dropdown-item  text-black" href="/phone">Handhpone</a><a class="dropdown-item  text-black" href="/akses">Aksesoris</a></div>
+                            <div class="dropdown-menu " role="menu"><a class="dropdown-item  text-black"  href="/pulsa">Pulsa</a><a class="dropdown-item  text-black" href="/voucher">Voucher</a><a class="dropdown-item  text-black" href="/handphone">Handhpone</a><a class="dropdown-item  text-black" href="/aksesoris">Aksesoris</a></div>
                         </li>
                         @if(auth()->user())
                         <li class="nav-item">
@@ -110,11 +108,11 @@
                             @else
                                 @if(auth()->user()->is_admin == 1)
                            
-                                    <a class="dropdown-item  text-black" href="{{ url('account') }}">{{ __('Admin Panel') }}</a>
+                                    <a class="dropdown-item  text-black" href="{{ route('admin.home') }}">{{ __('Admin Panel') }}</a>
                       
                                 @endif
                             
-                                    <a class="dropdown-item  text-black" href="{{ url('/') }}">{{ __('My Account') }}</a>
+                                    <a class="dropdown-item  text-black" href="{{ url('account') }}">{{ __('My Account') }}</a>
                        
                            
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -124,9 +122,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-    </div>
-                        
-                          
+             </div>          
                         </li>
                         @endguest
            
@@ -135,7 +131,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container-xll" style="background-color: beige;">
+        <div class="container-xll">
   
   <div class="container">
       <div class="row">
@@ -146,22 +142,18 @@
                             <input type="radio" name="radio-btn" id="radio2">
                             <input type="radio" name="radio-btn" id="radio3">
                             <input type="radio" name="radio-btn" id="radio4">
-                            <input type="radio" name="radio-btn" id="radio5">
 
                         <div class="slide first">
-                            <img src="../images/zula 1.jpeg" alt="">     
-                        </div>
-                        <div class="slide">
-                            <img src="../images/zula 3.jpeg" alt="">
-                        </div>
-                        <div class="slide">
-                            <img src="../images/zula 4.jpeg" alt="">
+                            <img src="../images/ar.jpg" alt="">     
                         </div>
                         <div class="slide">
                             <img src="../images/merdeka.png" alt="">
                         </div>
                         <div class="slide">
-                            <img src="../images/zula 2.jpeg" alt="">
+                            <img src="../images/teknokrat.png" alt="">
+                        </div>
+                        <div class="slide">
+                            <img src="../images/thrif.jpg" alt="">
                       
                         </div>
                     </div>
@@ -171,7 +163,6 @@
                         <div class="auto-btn2"></div>
                         <div class="auto-btn3"></div>
                         <div class="auto-btn4"></div>
-                        <div class="auto-btn5"></div>
                     </div>
 
                     <div class="navigation-manual">
@@ -179,7 +170,6 @@
                         <label for="radio2" class="manual-btn"></label>
                         <label for="radio3" class="manual-btn"></label>
                         <label for="radio4" class="manual-btn"></label>
-                        <label for="radio5" class="manual-btn"></label>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@
                         <div id="order-detail" class="d-none">
                             <p class="fw-bold text-grey mt-4">Barang</p>
                             <div id="data-order">
-
+                      
                             </div>
                             <p class="fw-bold text-grey mt-4">Data Pemesan</p>
                             <div>
@@ -20,7 +20,8 @@
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="Nama Lengkap" required>
+                                            placeholder="Nama Lengkap"  required>
+                                      
                                     </div>
                                     <div class="mb-3">
                                         <label for="telp" class="form-label">No WhatsApp</label>
@@ -40,6 +41,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Alamat Lengkap</label>
+                                     
                                         <textarea class="form-control" id="full-address" name="full_address" rows="3" required></textarea>
                                     </div>
                                     <div class="mb-3">
@@ -64,7 +66,7 @@
                             </div>
 
                             <div class="d-grid gap-2 mt-4">
-                                <button class="btn btn-secondary" type="button" onclick="order()">Pesan</button>
+                                <button class="btn btn-secondary" type="pay-button" >Pesan</button>
                             </div>
                         </div>
                     </div>
@@ -78,7 +80,9 @@
 @endsection
 
 @section('script')
+
     <script>
+       
         let dataProducts = localStorage.getItem('data_products')
         let dataOrder = localStorage.getItem('data_order')
         $('#all-products').val(dataProducts)

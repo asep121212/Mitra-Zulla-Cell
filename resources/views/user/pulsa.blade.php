@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
     <div class="container">
         <div class="mb-4" style="position: relative">
-            <div class="card" style="background: #F8EDE3">
+            <div class="card" style="background: #ABAC84">
                 <div class="card-body p-5">
                     <h3 class="text-center mb-3 fw-bold">Search</h3>
                     <form class="d-flex" role="search">
@@ -73,7 +74,7 @@
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="product-images/tri.jpg" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif
@@ -110,7 +111,7 @@
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="product-images/telkomsel.jpg" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif
@@ -147,7 +148,7 @@
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="product-images/axis.jpg" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif
@@ -184,7 +185,7 @@
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="product-images/indosat.png" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif
@@ -221,7 +222,7 @@
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @else
-                                        <img src="product-images/default.png" class="rounded img-fluid mb-2" alt=""
+                                        <img src="product-images/smartfren.png" class="rounded img-fluid mb-2" alt=""
                                             style="min-height: 153px; max-width: 213px backgroun: grey"
                                             alt="{{ $d->name }}">
                                     @endif
